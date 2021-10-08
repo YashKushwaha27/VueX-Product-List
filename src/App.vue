@@ -17,6 +17,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('./style.css');
+
 .main {
   height: 100%;
   width: 100%;
