@@ -1,1 +1,1 @@
-# VueX-Product-List
+# Vue-Product-list
