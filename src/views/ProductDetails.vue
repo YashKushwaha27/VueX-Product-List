@@ -39,6 +39,10 @@ export default {
             router.push({ path: '/' })
         }
     },
+    beforeUnmount() {
+        const store = useStore();
+        store.commit('clearSelectedProductName');
+    }
 }
 </script>
 

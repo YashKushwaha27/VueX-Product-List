@@ -7,6 +7,7 @@ export default createStore({
   state: {
     allProducts: [],
     currentProduct: {},
+    selectedProductName: "",
   },
   mutations: {
     setProductList(state, payload) {
@@ -15,6 +16,12 @@ export default createStore({
     setProductDetails(state, payload) {
       state.currentProduct = payload;
     },
+    setSelectedProductName(state, payload) {
+      state.selectedProductName = payload;
+    },
+    clearSelectedProductName(state) {
+      state.selectedProductName = '';
+    }
   },
   actions: {
     async setProductList(state) {
@@ -25,6 +32,7 @@ export default createStore({
     async setProductDetails(state, id) {
       const res = await axios.get(api + "products/" + id);
       const data = await res.data;
+      state.commit("setSelectedProductName", data?.title);
       state.commit("setProductDetails", data);
     },
   },
@@ -35,5 +43,8 @@ export default createStore({
     getProductDetails(state) {
       return state.currentProduct;
     },
+    getSelectedProductName(state) {
+      return state.selectedProductName;
+    }
   },
 });
